@@ -8,7 +8,7 @@ export default function Movie(props) {
             <div className={classes.MovieName}>
                 {props.name}
             </div>
-            <Button name="more"/>
+            <Button singlemov={props.singlemov} name="more" _id={props._id}/>
         </div>
     )
 }

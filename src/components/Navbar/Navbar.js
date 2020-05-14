@@ -17,7 +17,8 @@ export default function Navbar(props) {
                 <li key="Account">Acccount</li>,
                 <li key="about">About</li>,
                 <li key="logout" onClick={()=>props.auth()}>Logout</li>].reverse():
-                [<li key="Login" onClick={()=>props.auth()}>Login</li>] }
+                [<li key="Login" onClick={()=>props.auth()}>Login</li>,
+                <li key="About" onClick={()=>{props.setstatus(!props.status)}}>About</li>] }
             </ul>
         </nav>
     )

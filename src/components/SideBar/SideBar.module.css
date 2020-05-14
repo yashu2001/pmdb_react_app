@@ -7,6 +7,7 @@
     left:0;
     background-color:skyblue;
     transition: all 2s;
+    z-index:200;
 }
 .closebtn:hover{
     cursor: pointer;

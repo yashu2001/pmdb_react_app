@@ -11,6 +11,7 @@ nav{
     height:7vh;
     margin:0vh;
     padding:0;
+    z-index:200;
 }
 nav ul{
     padding:0;
