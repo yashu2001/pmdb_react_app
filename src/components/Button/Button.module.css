@@ -1,0 +1,11 @@
+.btn{
+    background-color: rgba(0,0,0,0);
+    border: solid black 0.1rem;
+    padding: 1.2rem 1.6rem;
+    margin:0.4rem 0;
+}
+.btn:hover{
+    background-color: teal;
+    color:white;
+    cursor: pointer;
+}

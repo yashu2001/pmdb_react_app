@@ -1,0 +1,60 @@
+.Brand{
+    padding:2vh;
+    float:left;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+nav{
+    position:sticky;
+    top:0;
+    background-color: skyblue;
+    height:7vh;
+    margin:0vh;
+    padding:0;
+}
+nav ul{
+    padding:0;
+    margin:0;
+}
+.NavList{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+.NavList li{
+    cursor: pointer;
+    padding:2vh 2vw;
+    text-align:center;
+    float:right;
+}
+.NavList li:hover{
+    background-color: #6096ac;
+    color:white;
+}
+.menu{
+    display: none;
+}
+@media (max-width:700px){
+    .NavList{
+        display: none;
+    }
+    .Brand{
+        display: none;
+    }
+    .menu{
+        display: inherit;
+        padding:0.5vh;
+    }
+    .menu:hover{
+        cursor: pointer;
+    }
+    .menu li{
+        width: 10%;
+        border:solid skyblue 0.05rem;
+        color:white;
+        background-color: white;
+        list-style: none;
+        padding:0.3vh;
+        margin:1vh;
+    }
+}

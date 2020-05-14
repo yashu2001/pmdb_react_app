@@ -1,0 +1,26 @@
+.Movieitem{
+    display: inline-block;
+    width:30vw;
+    margin:5vh 5vw;
+    background-color: blanchedalmond;
+    padding:2vw 0;
+}
+.Movieitem img{
+    height:20vh;
+    width:20vw;
+    text-align: center;
+}
+.Movieitem .MovieName{
+    color:teal;
+    font-size: 1.6rem;
+}
+@media (max-width:900px){
+    .Movieitem{
+        width:70vw;
+    }
+    .Movieitem img{
+        height:30vh;
+        width:50vw;
+        text-align: center;
+    }
+}
