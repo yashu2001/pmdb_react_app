@@ -12,7 +12,7 @@ export class SingleMovie extends Component {
         }
     }
     componentDidMount(){
-        axios.get('https://pmdbapi.herokuapp.com/api/movies/'+this.props.movieId)
+        axios.get('https://pmdb-api.herokuapp.com/api/movies'+this.props.movieId)
         .then(res=>this.setState({movie:res.data}))
         .catch(err=>{this.setState({error:true})});
     }
@@ -65,15 +65,16 @@ export class SingleMovie extends Component {
                     </form>
                 </div>
                     
+                
+                   { this.props.loggedIn?
+                    this.state.disabled?
+                    [<button className={classes.button} onClick={()=>this.setState({disabled:!this.state.disabled})}>Edit</button>,<button className={classes.button}>Delete</button>]
+                    :[<button className={classes.button}>Update</button>,<button className={classes.button}>Delete</button>]
+                    :<p className={classes.msg}>Please login to edit/delete</p>}
                 </Fragment>
-                }
-                {
-                this.props.loggedIn?
-                this.state.disabled?
-                [<button className={classes.button} onClick={()=>this.setState({disabled:!this.state.disabled})}>Edit</button>,<button className={classes.button}>Delete</button>]
-                :[<button className={classes.button}>Update</button>,<button className={classes.button}>Delete</button>]
-                :<p className={classes.msg}>Please login to edit/delete</p>
-                }
+                    }
+                
+                
             </Fragment>
         )
     }

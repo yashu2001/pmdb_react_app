@@ -1,9 +1,9 @@
 import React from 'react'
 import classes from './Background.module.css'
 
-export default function () {
+export default function (props) {
     return (
-        <div className={classes.background}>
-        </div>
+        <button className={classes.background} onClick={()=>props.close()}>
+        </button>
     )
 }

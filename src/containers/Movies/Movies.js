@@ -7,14 +7,14 @@ export class Movies extends Component {
     constructor(props){
         super(props)
         this.state={
-            movies:[],
+            movies:null,
             movieId:null,
             error:false
         }
     }
     componentDidMount(){
         console.log('movies component mounted');
-        axios.get('https://pmdbapi.herokuapp.com/api/movies')
+        axios.get('https://pmdb-api.herokuapp.com/api/movies')
                     .then(res=>this.setState({movies:res.data}))
                     .catch(err=>{
                         this.setState({error:true})
@@ -34,7 +34,7 @@ export class Movies extends Component {
                     <SingleMovie movieId={this.state.movieId} loggedIn={this.props.loggedIn}/>
                     :
                     this.state.error?<p>An error occured please check your internet</p>:
-                    this.state.movies.length===0?<Spinner></Spinner>:this.movieList()
+                    this.state.movies===null?<Spinner></Spinner>:this.state.movies.length===0?<p>We're sorry there aren't any movies added.Please feel free to signup and review some</p>:this.movieList()
                 }
             </Fragment>
             

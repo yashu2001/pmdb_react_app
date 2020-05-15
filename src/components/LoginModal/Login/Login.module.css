@@ -10,3 +10,15 @@ form{
     margin:2vh;
     padding:2vh;
 }
+.errmsg{
+    background-color:salmon;
+    padding:0.5rem;
+    border:solid red;
+    margin:0.5rem;
+}
+.sumsg{
+    background-color: seagreen;
+    padding:0.5rem;
+    border:solid green;
+    margin:0.5rem;
+}

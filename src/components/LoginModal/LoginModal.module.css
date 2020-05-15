@@ -1,0 +1,12 @@
+.active{
+    background-color:skyblue ;
+    text-align: center;
+    color:white;
+    padding:1.2rem;
+}
+.regular{
+    padding:1.2rem;
+    background-color:whitesmoke;
+    color:black;
+    text-align:center;
+}
