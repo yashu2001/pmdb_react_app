@@ -15,9 +15,10 @@ export default function (props) {
                 { props.loggedIn ? [
                 <li key="Movies" onClick={()=>{props.setstatus(!props.status)}}>Movies</li>,
                 <li key="Post" onClick={()=>{props.setstatus(!props.status)}}>Post Review</li>,
-                <li key="Account" onClick={()=>{props.setstatus(!props.status)}}>Acccount</li>,
                 <li key="About" onClick={()=>{props.setstatus(!props.status)}}>About</li>,
-                <li key="Logout" onClick={()=>props.auth()}>Logout</li>]:[<li key="About" onClick={()=>{props.setstatus(!props.status)}}>About</li>,<li key="Login" onClick={()=>props.auth()}>Login</li>   
+                <li key="Logout" onClick={()=>props.clearstate()}>Logout</li>]
+                :[<li key="About" onClick={()=>{props.setstatus(!props.status)}}>About</li>,
+                <li key="Login" onClick={()=>props.auth()}>Login</li>   
                 ]}
             </ul>
         </div>

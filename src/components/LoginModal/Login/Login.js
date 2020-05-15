@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import classes from './Login.module.css'
+import axios from 'axios'
 export class Login extends Component {
     constructor(props){
         super(props)
@@ -7,7 +8,8 @@ export class Login extends Component {
             form:{
                 username:'',
                 password:''
-            }
+            },
+            error:false
         }
     }
     onchange=(e)=>{
@@ -17,10 +19,32 @@ export class Login extends Component {
         frm[field]=value
         this.setState({form:frm})       
     }
+    login=(e)=>{
+        e.preventDefault()
+        let body={
+            username:this.state.form.username,
+            password:this.state.form.password
+        }
+        axios.post('https://pmdb-api.herokuapp.com/api/auth/login',body)
+              .then(res=>{
+                console.log(res)
+                this.props.setUser(this.state.form.username)
+                this.props.setLoggedin(true)
+                this.props.setToken(res.data.token)
+                this.props.setmodal(false)
+              })
+              .catch(err=>{
+                  console.log(err)
+                  this.setState({error:true})
+                  setTimeout(()=>this.setState({error:false}),3000)
+              })
+    }
     render() {
         return (
+            <Fragment>
+                {this.state.error?<p className={classes.errmsg}>Invalid username/password</p>:''}
             <div className={classes.login}>
-            <form>
+            <form onSubmit={this.login}>
                 <div className={classes.formgroup}>
                     <input type="text" placeholder="Username/Email" id="username" onChange={this.onchange} value={this.state.form.username}  className={classes.input} ></input>
                 </div>
@@ -34,6 +58,7 @@ export class Login extends Component {
                 </div>
             </form>
         </div>
+        </Fragment>
         )
     }
 }

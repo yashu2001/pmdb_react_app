@@ -22,7 +22,7 @@ export class Signup extends Component {
         this.setState({form:frm})       
     }
     signup=(e)=>{
-        e.preventDefault();
+        e.preventDefault()
         let message=[]
         let err=false
         if(this.state.form.confpassword!==this.state.form.password){
@@ -49,7 +49,7 @@ export class Signup extends Component {
                 setTimeout(()=>
                 {
                     this.setState({message:null,msgtype:null})
-                    this.props.setmodal()
+                    this.props.settab('Login')
                 },
                 3000
                 )

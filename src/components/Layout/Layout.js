@@ -7,6 +7,7 @@ import Background from '../Background/Background'
 import LoginModal from '../LoginModal/Index'
 export default function Layout() {
     const [User ,setUser]=useState(undefined)
+    const [Token,setToken]=useState(undefined) 
     const [loggedIn,setLoggedIn]=useState(false)
     const [sidenav,setsidenav]=useState(undefined)
     const [modal,setmodal]=useState(false)
@@ -18,12 +19,17 @@ export default function Layout() {
     const handleSideNav=()=>{
         setsidenav(!sidenav)
     }
+    const clearstate=()=>{
+        setUser(undefined)
+        setToken(undefined)
+        setLoggedIn(false)
+    }
     return (
         <Fragment>
-            <Navbar loggedIn={loggedIn} auth={handleModal} sidenav={handleSideNav}/>
-            <SideBar loggedIn={loggedIn} auth={handleModal} status={sidenav} setstatus={setsidenav}/>
+            <Navbar loggedIn={loggedIn} clearstate={clearstate} auth={handleModal} sidenav={handleSideNav}/>
+            <SideBar loggedIn={loggedIn} clearstate={clearstate} auth={handleModal} status={sidenav} setstatus={setsidenav}/>
             <br />
-            {modal?<div><Modal><LoginModal setmodal={setmodal}></LoginModal></Modal><Background close={setmodal}/></div>:null}
+            {modal?<div><Modal><LoginModal setmodal={setmodal} setLoggedin={setLoggedIn} setToken={setToken} setUser={setUser}></LoginModal></Modal><Background close={setmodal}/></div>:null}
             <Movies loggedIn={loggedIn}/>
         </Fragment>
     )

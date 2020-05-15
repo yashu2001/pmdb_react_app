@@ -8,8 +8,8 @@ export default function Index(props) {
         <div>
             <button className={tab==='Login'?classes.active:classes.regular} onClick={()=>settab('Login')}>Login</button>
             <button className={tab==='Signup'?classes.active:classes.regular} onClick={()=>settab('Signup')}>Signup</button>
-            {tab==='Login'?<Login></Login>:
-            <Signup setmodal={props.setmodal}></Signup>}
+            {tab==='Login'?<Login setmodal={props.setmodal} setLoggedin={props.setLoggedin} setToken={props.setToken} setUser={props.setUser}></Login>:
+            <Signup settab={settab}></Signup>}
         </div>
     )
 }
