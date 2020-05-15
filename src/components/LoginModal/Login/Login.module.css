@@ -1,0 +1,12 @@
+.formgroup{
+    padding:2vh;
+    width:70vw;
+    display:block;
+}
+form{
+    margin:2vh;
+}
+.input{
+    margin:2vh;
+    padding:2vh;
+}

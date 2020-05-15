@@ -28,6 +28,16 @@
     background-color: rgba(0,0,0,0);
     border:none;
 }
+.input,.text{
+    border:black solid 0.2rem;
+    padding:1.2rem;
+    font-size:1.2rem;
+}
+.text{
+    height:15vh;
+    width:30vw;
+    resize: none;
+}
 .input:disabled{
     padding:2vh;
     color:white;
@@ -40,7 +50,7 @@
     width:30vw;
 }
 .text:disabled[id="plot"]{
-    height:10vh;
+    height:15vh;
 }
 @media(max-width:768px){
     .label{
@@ -50,15 +60,43 @@
         font-weight:bold;
     }   
     .form{
-        width:80vw;
+        width:100vw;
+    }
+    .text{
+        /* height:15vh; */
+        width:70vw;
     }
     .input:disabled{
-        width:70vw;
+        width:80vw;
     }
     .text:disabled{
-        width:70vw;
+        width:80vw;
     }
     .text:disabled[id="plot"]{
-        height:30vh;
+        height:51vh;
+        width:80vw;
     }
+    .img{
+        width:70vw;
+        height:50vh;
+    }
+}
+@media(min-height:640px)and(max-width:1000px){
+    .text:disabled[id="plot"]{
+        height:40vh;
+        width:80vw;
+    }
+}
+.button{
+    padding:1.2rem;
+    margin:5px;
+    color:white;
+    background-color:teal;
+    border-radius:10px;
+    border:none;
+    cursor: pointer;
+}
+.button:hover{
+    background-color: black;
+    color:teal
 }

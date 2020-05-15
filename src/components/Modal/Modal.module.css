@@ -3,7 +3,7 @@
     margin-left:10vw;
     z-index:9999;
     width:80vw;
-    height:80vh;
+    /* height:80vh; */
     background-color: white;
 }
 .modal p{
