@@ -15,7 +15,9 @@ export class Movies extends Component {
         console.log('movies component mounted');
         axios.get('https://pmdbapi.herokuapp.com/api/movies')
                     .then(res=>this.setState({movies:res.data}))
-                    .catch(this.setState({error:true}));
+                    .catch(err=>{
+                        console.log(err)
+                    });
     }
     more=(id)=>{
         this.setState({movieId:id})

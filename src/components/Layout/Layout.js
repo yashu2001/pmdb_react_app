@@ -22,7 +22,7 @@ export default function Layout() {
             <Navbar loggedIn={loggedIn} auth={handleModal} sidenav={handleSideNav}/>
             <SideBar loggedIn={loggedIn} auth={handleModal} status={sidenav} setstatus={setsidenav}/>
             <br />
-            {modal?<div><Modal><p>hi there</p></Modal><Background /></div>:null}
+            {modal?<div><Modal></Modal><Background /></div>:null}
             <Movies />
         </Fragment>
     )

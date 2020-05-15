@@ -4,7 +4,7 @@ export default function Modal(props) {
     console.log(props)
     return (
         <div className={classes.modal}>
-           {props.childern} 
+           {props.children} 
         </div>
     )
 }
