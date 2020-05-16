@@ -1,7 +1,12 @@
+// Core react imports
 import React, { Component, Fragment } from 'react'
+// CSS import
 import classes from './Login.module.css'
+// Utility import
 import axios from 'axios'
+// The main class component that is used in layout
 export class Login extends Component {
+    // Constructor
     constructor(props){
         super(props)
         this.state={
@@ -12,6 +17,7 @@ export class Login extends Component {
             error:false
         }
     }
+    // On change handler for form fields
     onchange=(e)=>{
         const field=e.target.id
         const value=e.target.value
@@ -19,22 +25,24 @@ export class Login extends Component {
         frm[field]=value
         this.setState({form:frm})       
     }
+    // login handler 
     login=(e)=>{
         e.preventDefault()
+        // The body for the post request
         let body={
             username:this.state.form.username,
             password:this.state.form.password
         }
         axios.post('https://pmdb-api.herokuapp.com/api/auth/login',body)
               .then(res=>{
-                console.log(res)
+                // handling success
                 this.props.setUser(this.state.form.username)
                 this.props.setLoggedin(true)
                 this.props.setToken(res.data.token)
                 this.props.setmodal(false)
               })
               .catch(err=>{
-                  console.log(err)
+                  // handling failure   
                   this.setState({error:true})
                   setTimeout(()=>this.setState({error:false}),3000)
               })
@@ -42,7 +50,9 @@ export class Login extends Component {
     render() {
         return (
             <Fragment>
+                {/* JSX for error message */}
                 {this.state.error?<p className={classes.errmsg}>Invalid username/password</p>:''}
+            {/* JSX for form */}
             <div className={classes.login}>
             <form onSubmit={this.login}>
                 <div className={classes.formgroup}>
