@@ -4,6 +4,7 @@
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 nav{
     position:sticky;
     top:0;
@@ -27,6 +28,7 @@ nav ul{
     padding:2vh 2vw;
     text-align:center;
     float:right;
+    text-decoration: none;
 }
 .NavList li:hover{
     background-color: #6096ac;
