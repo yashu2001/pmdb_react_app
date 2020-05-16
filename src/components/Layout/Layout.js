@@ -1,6 +1,6 @@
 // Core react imports
 import React, { Fragment , useState } from 'react'
-import { BrowserRouter , Switch , Route } from 'react-router-dom'
+import { BrowserRouter , Switch , Route ,withRouter } from 'react-router-dom'
 // Importing main components for the routes
 import Movies from '../../containers/Movies/Movies'
 import About from '../About/Index'
@@ -43,6 +43,7 @@ export default function Layout() {
     // The JSX that is returned by the functional component to be rendered
     return (
         <Fragment>
+            <BrowserRouter>
             <Navbar 
             loggedIn={loggedIn} 
             clearstate={clearstate} 
@@ -69,9 +70,8 @@ export default function Layout() {
                 </div>
                 :null
             }
-            <BrowserRouter>
                 <Switch>
-                    <Route path="/about" exact component={About}>
+                    <Route path="/about" exact component={withRouter(About)}>
                     </Route>
                     <Route path="/add" exact>
                         <AddMovie />
@@ -80,7 +80,7 @@ export default function Layout() {
                         <Movies loggedIn={loggedIn}/>
                     </Route>
                 </Switch>
-            </BrowserRouter>
+                </BrowserRouter>        
         </Fragment>
     )
 }

@@ -19,15 +19,14 @@ export default function Navbar(props) {
             </div>
             {/* JSX for the navigation list */}
             <ul  className={classes.NavList}>
-                <BrowserRouter >
                     { props.loggedIn ? [
-                    <li><Link to="/">Movies</Link></li>,
-                    <li><Link to="/add">Post Review</Link></li>,
+                    <li><Link to="/" className={classes.link}>Movies</Link></li>,
+                    <li><Link to="/add" className={classes.link}>Post Review</Link></li>,
                     <li><Link to="/about" className={classes.link}>About</Link></li>,
-                    <li key="logout" onClick={()=>props.clearstate()}>Logout</li>].reverse():
+                    <li key="logout" className={classes.link} onClick={()=>props.clearstate()}>Logout</li>].reverse():
                     [<li key="Login" onClick={()=>props.auth()}>Login</li>,
-                    <li><Link to="/about">About</Link></li>] }
-                </BrowserRouter>
+                    <li><Link to="/about" className={classes.link}>About</Link></li>,
+                    <li><Link to="/" className={classes.link}>Movies</Link></li>] }
             </ul>
         </nav>
     )

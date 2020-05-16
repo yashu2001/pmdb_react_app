@@ -9,6 +9,12 @@
     transition: all 2s;
     z-index:200;
 }
+.link{
+    text-decoration: none;
+}
+.link:active{
+    color:black;
+}
 .closebtn:hover{
     cursor: pointer;
 }
