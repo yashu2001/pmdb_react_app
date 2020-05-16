@@ -44,32 +44,32 @@ export default function Layout() {
     return (
         <Fragment>
             <BrowserRouter>
-            <Navbar 
-            loggedIn={loggedIn} 
-            clearstate={clearstate} 
-            auth={handleModal} 
-            sidenav={handleSideNav}/>
-            <SideBar 
-            loggedIn={loggedIn} 
-            clearstate={clearstate} 
-            auth={handleModal} 
-            status={sidenav} 
-            setstatus={setsidenav}/>
-            <br />
-            {modal?
-                <div>
-                    <Modal>
-                        <LoginModal 
-                        setmodal={setmodal} 
-                        setLoggedin={setLoggedIn} 
-                        setToken={setToken} 
-                        setUser={setUser} >
-                        </LoginModal>    
-                    </Modal>
-                    <Background close={setmodal}/>
-                </div>
-                :null
-            }
+                <Navbar 
+                loggedIn={loggedIn} 
+                clearstate={clearstate} 
+                auth={handleModal} 
+                sidenav={handleSideNav}/>
+                <SideBar 
+                loggedIn={loggedIn} 
+                clearstate={clearstate} 
+                auth={handleModal} 
+                status={sidenav} 
+                setstatus={setsidenav}/>
+                <br />
+                {modal?
+                    <div>
+                        <Modal>
+                            <LoginModal 
+                            setmodal={setmodal} 
+                            setLoggedin={setLoggedIn} 
+                            setToken={setToken} 
+                            setUser={setUser} >
+                            </LoginModal>    
+                        </Modal>
+                        <Background close={setmodal}/>
+                    </div>
+                    :null
+                }
                 <Switch>
                     <Route path="/about" exact component={withRouter(About)}>
                     </Route>
@@ -80,7 +80,7 @@ export default function Layout() {
                         <Movies loggedIn={loggedIn}/>
                     </Route>
                 </Switch>
-                </BrowserRouter>        
+            </BrowserRouter>        
         </Fragment>
     )
 }
