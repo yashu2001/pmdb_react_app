@@ -5,7 +5,7 @@ import axios from 'axios'
 // Css imports
 import classes from './SingleMovie.module.css'
 // Component imports
-import Spinner from '../../../components/Spinner/Spinner'
+import Spinner from '../../components/Spinner/Spinner'
 // The main class component that is displayed when more is clicked 
 export class SingleMovie extends Component {
     // constructor
@@ -19,7 +19,7 @@ export class SingleMovie extends Component {
     }
     // This is a method that runs only on first rendering of the screen
     componentDidMount(){
-        axios.get('https://pmdb-api.herokuapp.com/api/movies'+this.props.movieId)
+        axios.get('https://pmdb-api.herokuapp.com/api/movies/'+this.props.match.params.id)
         .then(res=>this.setState({movie:res.data}))
         .catch(err=>{this.setState({error:true})});
     }

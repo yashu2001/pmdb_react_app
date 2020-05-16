@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from 'react'
 // Child container import
 import Movie from './Movie/Movie'
-import SingleMovie from './SingleMovie/SingleMovie'
+import SingleMovie from '../SingleMovie/SingleMovie'
 // Utility imports
 import axios from 'axios'
 // Componenet imports
@@ -29,7 +29,7 @@ export class Movies extends Component {
     }
     // This function is used to view a single movie
     more=(id)=>{
-        this.setState({movieId:id})
+        this.props.history.push(`/movie/${id}`)
     }
     // This function returns JSX for movie list
     movieList=()=>{

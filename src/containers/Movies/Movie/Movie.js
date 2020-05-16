@@ -1,5 +1,6 @@
 // Core react import
 import React from 'react'
+import { Link } from 'react-router-dom'
 // css module import
 import classes from './Movie.module.css'
 // Component imports

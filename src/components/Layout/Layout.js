@@ -5,6 +5,7 @@ import { BrowserRouter , Switch , Route ,withRouter } from 'react-router-dom'
 import Movies from '../../containers/Movies/Movies'
 import About from '../About/Index'
 import AddMovie from '../../containers/AddMovie/Index'
+import SingleMovie from '../../containers/SingleMovie/SingleMovie'
 // Importing the Navigation related components
 import Navbar from '../Navbar/Navbar'
 import SideBar from '../SideBar/SideBar'
@@ -71,14 +72,26 @@ export default function Layout() {
                     :null
                 }
                 <Switch>
-                    <Route path="/about" exact component={withRouter(About)}>
+                    <Route 
+                    path="/about" 
+                    exact 
+                    component={withRouter(About)}>
                     </Route>
-                    <Route path="/add" exact>
-                        <AddMovie />
-                    </Route>
-                    <Route path="/" exact >
-                        <Movies loggedIn={loggedIn}/>
-                    </Route>
+                    <Route 
+                    path="/add" 
+                    exact 
+                    render={(props)=><AddMovie { ...props } loggedIn={loggedIn}/>}
+                    />
+                    <Route 
+                    path="/" 
+                    exact 
+                    render={(props)=><Movies { ...props } loggedIn={loggedIn}/>}
+                    />
+                    <Route 
+                    path="/movie/:id" 
+                    exact
+                    render={(props)=><SingleMovie { ...props } loggedIn={loggedIn} />}
+                    />
                 </Switch>
             </BrowserRouter>        
         </Fragment>
