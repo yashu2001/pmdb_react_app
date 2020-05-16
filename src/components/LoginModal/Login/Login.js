@@ -51,22 +51,45 @@ export class Login extends Component {
         return (
             <Fragment>
                 {/* JSX for error message */}
-                {this.state.error?<p className={classes.errmsg}>Invalid username/password</p>:''}
+                {
+                    this.state.error?
+                    <p className={classes.errmsg}>Invalid username/password</p>
+                    :''
+                }
             {/* JSX for form */}
-            <div className={classes.login}>
-            <form onSubmit={this.login}>
-                <div className={classes.formgroup}>
-                    <input type="text" placeholder="Username/Email" id="username" onChange={this.onchange} value={this.state.form.username}  className={classes.input} ></input>
-                </div>
-                <div className={classes.formgroup}>
-                </div>
-                <div className={classes.formgroup}>
-                    <input type="password" placeholder="password" id="password" value={this.state.form.password} onChange={this.onchange} className={classes.input} ></input>
-                </div>
-                <div className={classes.formgroup}>
-                    <input type="submit"></input>
-                </div>
-            </form>
+            <div 
+            className={classes.login}>
+                <form 
+                onSubmit={this.login}>
+                    <div 
+                    className={classes.formgroup}>
+                        <input 
+                        type="text" 
+                        placeholder="Username/Email" 
+                        id="username" 
+                        onChange={this.onchange} 
+                        value={this.state.form.username}  
+                        className={classes.input} >
+                        </input>
+                    </div>
+                    <div 
+                    className={classes.formgroup}>
+                        <input 
+                        type="password" 
+                        placeholder="password" 
+                        id="password" 
+                        value={this.state.form.password} 
+                        onChange={this.onchange} 
+                        className={classes.input} >
+                        </input>
+                    </div>
+                    <div 
+                    className={classes.formgroup}>
+                        <input 
+                        type="submit">
+                        </input>
+                    </div>
+                </form>
         </div>
         </Fragment>
         )
