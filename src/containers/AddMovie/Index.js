@@ -1,6 +1,10 @@
+// Core react imports
 import React, { Component } from 'react'
+// css imports
 import classes from './AddMovie.module.css'
+// Utility imports
 import axios from 'axios'
+// The main functional component which is imported inside layout
 export class Index extends Component {
     constructor(props){
         super(props)
@@ -41,12 +45,10 @@ export class Index extends Component {
             body[key]=this.state.form[key]
             }
         }
-        console.log(this.props.token)
         const header={
             'Content-Type':'application/json',
             'x-auth-token':this.props.token
         }
-        console.log(body)
         axios.post('https://pmdb-api.herokuapp.com/api/movies',body,{headers:header})
               .then(res=>{
                   console.log(res)
@@ -55,11 +57,14 @@ export class Index extends Component {
                   }
                   else{
                       this.setState({error:true})
+                      setTimeout(this.setState({error:false,messages:[]}),3000)
                   }
               })
               .catch(err=>{
-                  console.log(err.response.data)
-                  this.setState({error:true})
+                  const msg=this.state.messages
+                  msg.push(err.response.data.error)
+                  this.setState({error:true,messages:msg})
+                  setTimeout(()=>this.setState({error:false,messages:[]}),3000)
               })
     }
     validate=async (form)=>{
@@ -80,7 +85,7 @@ export class Index extends Component {
            return true
     }
     getmessages=()=>{
-        return this.state.messages.map(message=><p className={classes.error}>{message}</p>)
+        return this.state.messages.map(message=><p key={message} className={classes.error}>{message}</p>)
     }
     render() {
         return (

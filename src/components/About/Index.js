@@ -1,5 +1,6 @@
+// Core react imports
 import React from 'react'
-
+// The main functional component imported into layout
 export default function Index() {
     return (
         <div>
