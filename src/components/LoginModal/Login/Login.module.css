@@ -22,3 +22,9 @@ form{
     border:solid green;
     margin:0.5rem;
 }
+.submit{
+    color:teal;
+    background-color: black;
+    border:none;
+    padding:1.2rem;
+}

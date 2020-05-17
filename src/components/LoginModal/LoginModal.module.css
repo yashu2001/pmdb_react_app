@@ -1,12 +1,14 @@
 .active{
-    background-color:skyblue ;
+    background-color:teal;
     text-align: center;
     color:white;
     padding:1.2rem;
+    border:none;
 }
 .regular{
     padding:1.2rem;
-    background-color:whitesmoke;
-    color:black;
+    background-color:black;
+    color:teal;
     text-align:center;
+    border:none
 }

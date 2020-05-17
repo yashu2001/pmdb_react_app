@@ -8,25 +8,25 @@ export default function Navbar(props) {
     return (
         <nav>
             {/* JSX for hamburger */}
-            <div className={classes.menu} onClick={props.sidenav}>
+            <div className={classes.menu} onClick={props.sidenav} key="hamburger">
                 <li></li>
                 <li></li>
                 <li></li>
             </div>
             {/* JSX for brand logo/name */}
-            <div className={classes.Brand}>
+            <div className={classes.Brand} key="logo">
                 PMDB
             </div>
             {/* JSX for the navigation list */}
-            <ul  className={classes.NavList}>
+            <ul  className={classes.NavList} key="list">
                     { props.loggedIn ? [
-                    <li><Link to="/" className={classes.link}>Movies</Link></li>,
-                    <li><Link to="/add" className={classes.link}>Post Review</Link></li>,
-                    <li><Link to="/about" className={classes.link}>About</Link></li>,
+                    <li key="movies"><Link to="/" className={classes.link}>Movies</Link></li>,
+                    <li key="addmovie"><Link to="/add" className={classes.link}>Post Review</Link></li>,
+                    <li key="about"><Link to="/about" className={classes.link}>About</Link></li>,
                     <li key="logout" className={classes.link} onClick={()=>props.clearstate()}>Logout</li>].reverse():
-                    [<li key="Login" onClick={()=>props.auth()}>Login</li>,
-                    <li><Link to="/about" className={classes.link}>About</Link></li>,
-                    <li><Link to="/" className={classes.link}>Movies</Link></li>] }
+                    [<li key="Login" onClick={()=>props.auth()} style={{color:"white"}}>Login</li>,
+                    <li key="about1"><Link to="/about" className={classes.link}>About</Link></li>,
+                    <li key="movies1"><Link to="/" className={classes.link}>Movies</Link></li>] }
             </ul>
         </nav>
     )

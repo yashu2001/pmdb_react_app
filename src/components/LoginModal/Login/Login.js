@@ -37,8 +37,11 @@ export class Login extends Component {
               .then(res=>{
                 // handling success
                 this.props.setUser(this.state.form.username)
+                localStorage.setItem('username',this.state.form.username)
                 this.props.setLoggedin(true)
+                localStorage.setItem('loggedin',true)
                 this.props.setToken(res.data.token)
+                localStorage.setItem('token',res.data.token)
                 this.props.setmodal(false)
               })
               .catch(err=>{
@@ -86,6 +89,7 @@ export class Login extends Component {
                     <div 
                     className={classes.formgroup}>
                         <input 
+                        className={classes.submit}
                         type="submit">
                         </input>
                     </div>

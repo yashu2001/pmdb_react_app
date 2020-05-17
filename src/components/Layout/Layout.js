@@ -16,11 +16,11 @@ import LoginModal from '../LoginModal/Index'
 // My main functional component that is imported in App.js
 export default function Layout() {
     // A state to hold the user name
-    const [User ,setUser]=useState(undefined)
+    const [User ,setUser]=useState(localStorage.getItem('username') || undefined)
     // A state to hold the jwt token obtained on login
-    const [Token,setToken]=useState(undefined) 
+    const [Token,setToken]=useState(localStorage.getItem('token') || undefined) 
     // A state to check if the user is logged in or not
-    const [loggedIn,setLoggedIn]=useState(false)
+    const [loggedIn,setLoggedIn]=useState(localStorage.getItem('loggedin') || false)
     // A state to check if the sidenav is open or not
     const [sidenav,setsidenav]=useState(undefined)
     // A state to check if the modal is open or no
@@ -40,6 +40,7 @@ export default function Layout() {
         setUser(undefined)
         setToken(undefined)
         setLoggedIn(false)
+        localStorage.clear()
     }
     // The JSX that is returned by the functional component to be rendered
     return (
@@ -80,7 +81,7 @@ export default function Layout() {
                     <Route 
                     path="/add" 
                     exact 
-                    render={(props)=><AddMovie { ...props } loggedIn={loggedIn}/>}
+                    render={(props)=><AddMovie { ...props } loggedIn={loggedIn} token={Token}/>}
                     />
                     <Route 
                     path="/" 
@@ -90,7 +91,7 @@ export default function Layout() {
                     <Route 
                     path="/movie/:id" 
                     exact
-                    render={(props)=><SingleMovie { ...props } loggedIn={loggedIn} />}
+                    render={(props)=><SingleMovie { ...props } loggedIn={loggedIn} token={Token} />}
                     />
                 </Switch>
             </BrowserRouter>        

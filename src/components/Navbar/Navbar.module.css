@@ -3,9 +3,12 @@
     float:left;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
+    color:white;
 }
 .link{
     text-decoration: none;
+    color:white;
+    font-weight: 500;
 }
 .link:active{
     color:black;
@@ -13,7 +16,7 @@
 nav{
     position:sticky;
     top:0;
-    background-color: skyblue;
+    background-color:black;
     height:7vh;
     margin:0vh;
     padding:0;
@@ -58,11 +61,29 @@ nav ul{
     }
     .menu li{
         width: 10%;
-        border:solid skyblue 0.05rem;
+        border:solid black 0.05rem;
         color:white;
         background-color: white;
         list-style: none;
-        padding:0.3vh;
+        padding:0.2vh;
+        margin:1vh;
+    }
+    .menu li:first-child{
+        width: 7%;
+        border:solid black 0.05rem;
+        color:white;
+        background-color: white;
+        list-style: none;
+        padding:0.2vh;
+        margin:1vh;
+    }
+    .menu li:last-child{
+        width: 7%;
+        border:solid black 0.05rem;
+        color:white;
+        background-color: white;
+        list-style: none;
+        padding:0.2vh;
         margin:1vh;
     }
 }

@@ -28,6 +28,81 @@ export class SingleMovie extends Component {
         let mov=this.state.movie
         mov[elem.id]=elem.value
         this.setState({movie:mov})
+    }
+    
+    
+    submit= async (e)=>{
+        e.preventDefault()
+        const res=await this.validate(this.state.movie)
+        if(!res){
+            return
+        }
+        const body={}
+        for (var key in this.state.movie){
+            if(key==='year' || key==='rating'){
+                body[key]=Number(this.state.movie[key])
+            }
+            else{
+            body[key]=this.state.movie[key]
+            }
+        }
+        console.log(this.props.token)
+        const header={
+            'Content-Type':'application/json',
+            'x-auth-token':this.props.token
+        }
+        axios.put('https://pmdb-api.herokuapp.com/api/movies/'+this.state.movie._id,body,{headers:header})
+              .then(res=>{
+                  console.log(res)
+                  if(res.status===200){
+                      this.props.history.push('/')
+                  }
+                  else{
+                      this.setState({error:true})
+                  }
+              })
+              .catch(err=>{
+                  console.log(err.response.data)
+                  this.setState({error:true})
+              })
+    }
+    validate=async (form)=>{
+        if(
+            form['name'].length===0 
+            || String(form['rating']).length===0
+            ||String(form['year']).length===0
+            ||form['directedBy'].length===0
+            ||form['poster'].length===0
+            ||form['cast'].length===0
+            ||form['genre'].length===0
+            ||form['plot'].length===0
+           )
+           {
+               return false;
+           }
+           return true
+    }
+
+
+
+    delete=(e)=>{
+        e.preventDefault()
+        console.log('deleting')
+        const id=this.state.movie._id
+        const header={
+            'Content-Type':'application/json',
+            'x-auth-token':this.props.token
+        }
+        axios.delete('https://pmdb-api.herokuapp.com/api/movies/'+id,{headers:header})
+             .then(res=>{
+                 if(res.status===200)
+                 {
+                     this.props.history.push('/')
+                 }
+                 else{
+
+                 }
+             })
     }    
     render() {
         return (
@@ -61,10 +136,13 @@ export class SingleMovie extends Component {
                             htmlFor="name">Name</label>
                             <input 
                             className={classes.input} 
-                            type="text" id="name" 
+                            type="text" 
+                            id="name" 
                             value={this.state.movie.name} 
                             onChange={(e)=>this.handlechange(e.target)} 
-                            disabled={this.state.disabled} />
+                            required
+                            disabled={this.state.disabled} 
+                            />
                         </div>
                         <div 
                         className={classes.formgroup}>
@@ -79,7 +157,8 @@ export class SingleMovie extends Component {
                             id="directedBy" 
                             value={this.state.movie.directedBy} 
                             onChange={(e)=>this.handlechange(e.target)} 
-                            disabled={this.state.disabled} />
+                            disabled={this.state.disabled} 
+                            required/>
                         </div>
                         <div 
                         className={classes.formgroup}>
@@ -90,10 +169,14 @@ export class SingleMovie extends Component {
                             </label>
                             <input 
                             className={classes.input}
-                            type="text" id="rating" 
+                            type="number" 
+                            id="rating" 
                             onChange={(e)=>this.handlechange(e.target)} 
                             value={this.state.movie.rating} 
-                            disabled={this.state.disabled} />
+                            disabled={this.state.disabled} 
+                            min={0}
+                            max={10}
+                            required/>
                         </div>
                         <div 
                         className={classes.formgroup}>
@@ -104,11 +187,14 @@ export class SingleMovie extends Component {
                             </label>
                             <input 
                             className={classes.input}
-                            type="text" 
+                            type="number" 
                             id="year" 
                             value={this.state.movie.year} 
                             onChange={(e)=>this.handlechange(e.target)} 
-                            disabled={this.state.disabled} />
+                            disabled={this.state.disabled}
+                            min={1971} 
+                            max={new Date().getFullYear()}
+                            required/>
                         </div>
                         <div 
                         className={classes.formgroup}>
@@ -121,7 +207,9 @@ export class SingleMovie extends Component {
                             onChange={(e)=>this.handlechange(e.target)} 
                             id="plot" 
                             value={this.state.movie.plot} 
-                            disabled={this.state.disabled} />
+                            disabled={this.state.disabled}
+                            minLength={50} 
+                            required/>
                         </div>
                         <div className={classes.formgroup}>
                             <label  
@@ -134,7 +222,8 @@ export class SingleMovie extends Component {
                             id="genre" 
                             value={this.state.movie.genre} 
                             onChange={(e)=>this.handlechange(e.target)} 
-                            disabled={this.state.disabled} />
+                            disabled={this.state.disabled} 
+                            required/>
                         </div>
                         <div 
                         className={classes.formgroup}>
@@ -157,20 +246,27 @@ export class SingleMovie extends Component {
                    { this.props.loggedIn?
                     this.state.disabled?
                     [<button 
+                        key="edit"
                         className={classes.button} 
                         onClick={()=>this.setState({disabled:!this.state.disabled})}>
                             Edit
                         </button>,
                         <button 
-                        className={classes.button}>
+                        className={classes.button}
+                        onClick={this.delete}
+                        key="delete-orig">
                             Delete
                         </button>]
                     :[<button 
-                        className={classes.button}>
+                        className={classes.button}
+                        key="update"
+                        onClick={this.submit}>
                             Update
                         </button>,
                         <button 
-                        className={classes.button}>
+                        className={classes.button}
+                        key="delete"
+                        onClick={this.delete}>
                             Delete
                         </button>]
                     :<p 

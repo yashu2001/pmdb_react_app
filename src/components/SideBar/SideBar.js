@@ -23,13 +23,13 @@ export default function (props) {
             {/* JSX for the sidebar list */}
             <ul className={classes.SideList}>
                 { props.loggedIn ? [
-                <li><Link to="/" className={classes.link} onClick={()=>props.setstatus(!props.status)}>Movies</Link></li>,
-                <li><Link to="/add" className={classes.link} onClick={()=>props.setstatus(!props.status)}>Post Review</Link></li>,
-                <li><Link to="/about" className={classes.link} onClick={()=>props.setstatus(!props.status)}>About</Link></li>,
+                <li key="movies"><Link to="/" className={classes.link} onClick={()=>props.setstatus(!props.status)}>Movies</Link></li>,
+                <li key="add"><Link to="/add" className={classes.link} onClick={()=>props.setstatus(!props.status)}>Post Review</Link></li>,
+                <li key="about"><Link to="/about" className={classes.link} onClick={()=>props.setstatus(!props.status)}>About</Link></li>,
                 <li key="logout" className={classes.link} onClick={()=>props.clearstate()}>Logout</li>].reverse():
                 [<li key="Login" onClick={()=>props.auth()}>Login</li>,
-                <li><Link to="/about" className={classes.link} onClick={()=>props.setstatus(!props.status)}>About</Link></li>,
-                <li><Link to="/" className={classes.link} onClick={()=>props.setstatus(!props.status)}>Movies</Link></li>]    
+                <li key="about1"><Link to="/about" className={classes.link} onClick={()=>props.setstatus(!props.status)}>About</Link></li>,
+                <li key="movies1"><Link to="/" className={classes.link} onClick={()=>props.setstatus(!props.status)}>Movies</Link></li>]    
                 }
             </ul>
         </div>

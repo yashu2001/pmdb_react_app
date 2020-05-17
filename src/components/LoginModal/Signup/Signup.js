@@ -141,7 +141,8 @@ export class Signup extends Component {
                         </div>
                         <div 
                         className={classes.formgroup}>
-                            <button>
+                            <button
+                            className={classes.submit}>
                                 Submit
                             </button>
                         </div>
